@@ -13,7 +13,7 @@ public class Thumbnail {
    private String thumbnailUri;
    private String date;
 
-   @OneToMany
+   @OneToMany(cascade = CascadeType.ALL)
    private List<Card> cards;
 
 
