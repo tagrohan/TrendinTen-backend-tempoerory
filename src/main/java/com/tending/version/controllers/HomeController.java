@@ -29,13 +29,22 @@ public class HomeController {
 
 
    @GetMapping("/get_content")
-   public List<Thumbnail> getContent() {
-      return service.getContents();
+   public ResponseEntity<List<Thumbnail>> getContent() {
+      List<Thumbnail> thumbnails = service.getContents();
+      if (thumbnails != null) {
+         return ResponseEntity.ok(thumbnails);
+      }
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
    }
 
    @GetMapping("/get_cards")
-   public List<Card> getCards() {
-      return service.getCards();
+   public ResponseEntity<List<Card>> getCards() {
+
+      List<Card> cards = service.getCards();
+      if (cards != null) {
+         return ResponseEntity.ok(cards);
+      }
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
    }
 
    @GetMapping("/get_card/{number}")
@@ -43,20 +52,6 @@ public class HomeController {
       return service.getCard(number);
    }
 
-   @GetMapping("/save")
-   public String saveImages() {
-//      List<Card> cards = Saving.getSecond();
-      List<Card> cards2 = Saving.getSecond2();
-      Thumbnail t2 = new Thumbnail("Top Agencies", "mossad.png", new Date().toString(), cards2);
-      service.savingCards(t2);
-      List<Card> cards3 = Saving.getSecond3();
-      Thumbnail t3 = new Thumbnail("Top Medical institutes", "cmi.jpg", new Date().toString(), cards3);
-      service.savingCards(t3);
-      List<Card> cards4 = Saving.getSecond4();
-      Thumbnail t4 = new Thumbnail("Best Carriers", "deta.png", new Date().toString(), cards4);
-      service.savingCards(t4);
-      return "saved";
-   }
 
    @GetMapping("/image/{nameOfFile}")
    public ResponseEntity<byte[]> getImage(@PathVariable("nameOfFile") String path) {
@@ -80,5 +75,27 @@ public class HomeController {
       } catch (Exception e) {
          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
       }
+   }
+
+
+   @GetMapping("/save")
+   public String saveImages() {
+//      List<Card> cards = Saving.getSecond();
+
+
+//      List<Card> cards3 = Saving.getSecond3();
+//      Thumbnail t3 = new Thumbnail("Top Medical institutes", "cmi.jpg", new Date().toString(), cards3);
+//      service.savingCards(t3);
+//
+//
+//      List<Card> cards2 = Saving.getSecond2();
+//      Thumbnail t2 = new Thumbnail("Top Agencies", "mossad.png", new Date().toString(), cards2);
+//      service.savingCards(t2);
+      List<Card> cards4 = Saving.getSecond5();
+      Thumbnail t4 = new Thumbnail("Best Cars", "deta.png", new Date().toString(), cards4);
+      service.savingCards(t4);
+
+
+      return "saved";
    }
 }
