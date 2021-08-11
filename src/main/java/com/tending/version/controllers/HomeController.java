@@ -78,8 +78,8 @@ public class HomeController {
    }
 
 
-   @GetMapping("/save")
-   public String saveImages() {
+//   @GetMapping("/save")
+//   public String saveImages() {
 //      List<Card> cards = Saving.getSecond();
 
 
@@ -91,11 +91,11 @@ public class HomeController {
 //      List<Card> cards2 = Saving.getSecond2();
 //      Thumbnail t2 = new Thumbnail("Top Agencies", "mossad.png", new Date().toString(), cards2);
 //      service.savingCards(t2);
-      List<Card> cards4 = Saving.getSecond5();
-      Thumbnail t4 = new Thumbnail("Best Cars", "deta.png", new Date().toString(), cards4);
-      service.savingCards(t4);
+//      List<Card> cards4 = Saving.getSecond5();
+//      Thumbnail t4 = new Thumbnail("Best Cars", "deta.png", new Date().toString(), cards4);
+//      service.savingCards(t4);
 
 
-      return "saved";
-   }
+//      return "saved";/
+//   }
 }
